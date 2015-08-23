@@ -25,7 +25,8 @@ makeCacheMatrix <- function(mtx = matrix()) {
 
 ## Write a short comment describing this function
 
-# Compute the inverse of the special matrix returned by makeCacheMatrix above
+# Compute the inverse of the special matrix returned by makeCacheMatrix above if the inverse matrix is null and/or the
+# original matrix has changed
 cacheSolve <- function(mtx, ...) {
         ## Return a matrix that is the inverse of 'x'
         intmtx <- mtx$getinmtx()
