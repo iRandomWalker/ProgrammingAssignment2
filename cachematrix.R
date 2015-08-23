@@ -6,14 +6,18 @@
 # Create a special matrix object that can cache its inverse
 makeCacheMatrix <- function(mtx = matrix()) {
         invmtx <- NULL
+        # set matrix
         set <- function(mtx.y) {
-                mtx <<- mtx.y
+                mtx <<- mtx.y # set a new matrix, mtx.y, to mtx in the parent environment with <<-.
                 intmtx <<- NULL
         }
+        # retrieve matrix
         get <- function() mtx
+        # set inverse matrix; note the assignment operator, <<-.
         setinvmtx <- function(intmtx.new) intmtx <<- intmtx.new
         getintmtx <- function() intmtx
-        list(set = set, get = get,
+        # return a list of of set(), get(), setintmtx(), and getintmtx()
+        list(set = set, get = get, 
              setintmtx = setintmtx,
              getintmtx = getintmtx)
 }
@@ -31,8 +35,12 @@ cacheSolve <- function(mtx, ...) {
                 message("getting cached data")
                 return(intmtx)
         }
+        # get matrix and store in data
         data <- mtx$get()
+        # calculate the inverse matrix.
         intmtx <- solve(data, ...)
+        # make a copy of the inverse matrix to mtx
         mtx$setintmtx(intmtx)
+        # return the inverse matrix calculated by solve(), if the cache does not have it.
         intmtx
 }
