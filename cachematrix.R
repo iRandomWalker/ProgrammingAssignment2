@@ -31,8 +31,8 @@ cacheSolve <- function(mtx, ...) {
                 message("getting cached data")
                 return(intmtx)
         }
-        data <-mtx$get()
-        intmtx <-solve(data, ...)
+        data <- mtx$get()
+        intmtx <- solve(data, ...)
         mtx$setintmtx(intmtx)
         intmtx
 }
